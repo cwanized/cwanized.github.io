@@ -1,0 +1,16 @@
+/* styles.css */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+p {
+    color: #666;
+    line-height: 1.6;
+}
