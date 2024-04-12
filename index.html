@@ -15,21 +15,20 @@
             background-position: center;
             height: 100vh; /* Fullscreen height */
             overflow: hidden; /* Hide overflow */
-            position: relative;
+            display: flex;
+            flex-direction: column;
         }
         .container {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            margin-top: auto; /* Push to the bottom */
             width: 80%;
-            max-height: 80%; /* Max 80% of viewport height */
+            max-height: 80vh; /* Max 80% of viewport height */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             background-color: rgba(33, 33, 33, 0.8); /* leicht transparent */
             color: #ffffff;
             overflow-y: auto; /* Enable vertical scrollbar if needed */
+            position: relative; /* Relative positioning for absolute elements */
         }
         h1 {
             text-align: center;
@@ -39,6 +38,23 @@
         p {
             line-height: 1.6;
         }
+        .button-container {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.5); /* leicht transparent */
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Schlagschatten */
+            backdrop-filter: blur(5px); /* Blur-Effekt */
+            color: #000000;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -46,6 +62,16 @@
         <h1>Welcome to My GitHub Page</h1>
         <p>This is a simple example of a GitHub Pages homepage.</p>
         <p>Feel free to customize it as you like!</p>
+        <div class="button-container">
+            <button class="button" onclick="changeBackground('https://www.bing.com/th?id=OHR.AbandonedRailway_ROW7737200216_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp')">Yesterday's Bing Image</button>
+            <button class="button" onclick="changeBackground('https://www.bing.com/th?id=OHR.ChalkCliffs_ROW6602065569_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp')">Previous Bing Image</button>
+        </div>
     </div>
+
+    <script>
+        function changeBackground(url) {
+            document.body.style.backgroundImage = 'url("' + url + '")';
+        }
+    </script>
 </body>
 </html>
