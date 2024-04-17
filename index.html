@@ -20,58 +20,54 @@
         }
         .container {
             margin-top: auto; /* Push to the bottom */
-            width: 600px;
-            height: 700px; /* Max 80% of viewport height */
-            padding: 20px;
+            width: 80%; /* Adjust width as needed */
+            max-width: 800px; /* Set max width to prevent stretching on large screens */
+            margin: auto; /* Center container horizontally */
+            display: grid;
+            grid-template-columns: repeat(6, 1fr); /* 6 columns */
+            gap: 20px; /* Gap between grid items */
+        }
+        .icon {
+            background-color: rgba(255, 255, 255, 0.5); /* Leicht transparent */
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
-            background-color: rgba(33, 33, 33, 0.8); /* leicht transparent */
-            color: #ffffff;
-            overflow-y: auto; /* Enable vertical scrollbar if needed */
-            position: relative; /* Relative positioning for absolute elements */
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* verschwommener Schatten */
-        }
-        p {
-            line-height: 1.6;
-        }
-        .button-container {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-        }
-        .button {
-            padding: 10px 20px;
-            background-color: rgba(255, 255, 255, 0.5); /* leicht transparent */
-            border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Schlagschatten */
             backdrop-filter: blur(5px); /* Blur-Effekt */
             color: #000000;
             cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px; /* Adjust height as needed */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to CWANiZED Github.io</h1>
-        <p>under heavy constuction</p>
-        <p></p>
-        <div class="button-container">
-            <button class="button" onclick="changeBackground('https://www.bing.com/th?id=OHR.AbandonedRailway_ROW7737200216_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp')">Yesterday's Bing Image</button>
-            <button class="button" onclick="changeBackground('https://www.bing.com/th?id=OHR.ChalkCliffs_ROW6602065569_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp')">Previous Bing Image</button>
-        </div>
+        <!-- Placeholder-Icons -->
+        <div class="icon">Icon 1</div>
+        <div class="icon">Icon 2</div>
+        <div class="icon">Icon 3</div>
+        <div class="icon">Icon 4</div>
+        <div class="icon">Icon 5</div>
+        <div class="icon">Icon 6</div>
+        <div class="icon">Icon 7</div>
+        <div class="icon">Icon 8</div>
+        <div class="icon">Icon 9</div>
+        <div class="icon">Icon 10</div>
+        <div class="icon">Icon 11</div>
+        <div class="icon">Icon 12</div>
+        <div class="icon">Icon 13</div>
+        <div class="icon">Icon 14</div>
+        <div class="icon">Icon 15</div>
+        <div class="icon">Icon 16</div>
+        <div class="icon">Icon 17</div>
+        <div class="icon">Icon 18</div>
+        <div class="icon">Icon 19</div>
+        <div class="icon">Icon 20</div>
+        <div class="icon">Icon 21</div>
+        <div class="icon">Icon 22</div>
+        <div class="icon">Icon 23</div>
+        <div class="icon">Icon 24</div>
     </div>
-
-    <script>
-        function changeBackground(url) {
-            document.body.style.backgroundImage = 'url("' + url + '")';
-        }
-    </script>
 </body>
 </html>
