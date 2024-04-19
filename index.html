@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,59 +14,253 @@
             background-image: url('https://www.bing.com/th?id=OHR.AbandonedRailway_ROW7737200216_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp');
             background-size: cover;
             background-position: center;
-            height: 100vh; /* Fullscreen height */
-            overflow: hidden; /* Hide overflow */
+            height: 100vh;
+            /* Fullscreen height */
+            overflow: hidden;
+            /* Hide overflow */
             display: flex;
             flex-direction: column;
         }
+
         .container {
-            margin-top: auto; /* Push to the bottom */
+            position: fixed;
+            bottom: 30px;
+            /* Höhe der Taskleiste */
+            left: 50%;
+            /* Horizontal zentrieren */
+            transform: translateX(-50%);
+            /* Horizontal zentrieren */
             display: grid;
-            grid-template-columns: repeat(6, 1fr); /* 6 columns */
-            gap: 20px; /* Gap between grid items */
+            grid-template-columns: repeat(6, 1fr);
+            grid-auto-rows: 1fr;
+            gap: 10px;
             padding: 20px;
+            width: 30vw;
+            border-color: rgb(255, 208, 132);
+            height: 70vh;
         }
+
         .icon {
-            background-color: rgba(255, 255, 255, 0.5); /* Leicht transparent */
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Schlagschatten */
-            backdrop-filter: blur(5px); /* Blur-Effekt */
-            color: #000000;
-            cursor: pointer;
+            position: relative;
+            /* Relative positioning for absolute elements */
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100px; /* Adjust height as needed */
+            text-align: center;
+            /* Quadratische Abmessungen relativ zur Höhe des Startmenüs */
+            width: 7vh;
+            height: 7vh;
+            background-color: rgba(255, 255, 255, 0.5);
+            /* Leicht transparent */
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            /* Schlagschatten */
+            backdrop-filter: blur(5px);
+            /* Blur-Effekt */
+            color: #000000;
+            cursor: pointer;
+        }
+
+        .icon img {
+            width: 50%;
+            /* Icon/Bild auf 50% der Containerbreite */
+            height: auto;
+            /* Automatische Höhe, um das Seitenverhältnis beizubehalten */
+        }
+
+        .title {
+            position: absolute;
+            bottom: -20px;
+            /* Positionierung relativ zur unteren Kante des Icons */
+            left: 50%;
+            transform: translate(-50%, 50%);
+            /* Zentrierung des Titels vertikal und horizontal */
+            width: 100%;
+            text-align: center;
+            max-width: 100%;
+            color: white;
+            /* Textfarbe auf Weiß setzen */
+            /* Hinzufügen von Padding am unteren Rand des Titels */
+            box-sizing: border-box;
+            /* Sicherstellen, dass das Padding zur Gesamthöhe des Elements gehört */
+            word-wrap: break-word;
+            font-size: 11px;
+        }
+
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            /* An den unteren Rand des Bildschirms anheften */
+            width: 100%;
+            /* Vollständige Breite */
+            height: 40px;
+            /* Höhe der Taskleiste */
+            background-color: rgba(28, 28, 28, 1);
+            /* Semi-transparente Hintergrundfarbe */
+            /*border-top: 1px solid #ffffff; /* Weißer oberer Rand */
+        }
+
+        .windows-logo {
+            position: absolute;
+            /* Absolute positionierung relativ zum Startmenü */
+            top: 5px;
+            /* 5px von oben entfernt */
+            left: 50%;
+            /* In der Mitte horizontal zentriert */
+            transform: translateX(-50%);
+            /* Zurückverschieben um die Hälfte der Breite */
+            cursor: pointer;
+            /* Cursor hinzufügen, um anzuzeigen, dass es anklickbar ist */
+        }
+
+        .clock {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 20px;
+            color: white;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            margin: auto;
+        }
+
+        /* Stil für das frei bewegbare Fenster */
+        /* Stil für das frei bewegbare Fenster */
+        .window {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            /* etwas breiter */
+            min-height: 220px;
+            /* Mindesthöhe für den Inhalt */
+            background-color: #1e1e1e;
+            /* Dunkler Hintergrund im Dark Theme */
+            border-radius: 8px;
+            /* Abgerundete Ecken */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            /* Schatten */
+            z-index: 1000;
+        }
+
+        .window-title {
+            background-color: #2e2e2e;
+            /* Dunkle Titelleiste */
+            color: #ffffff;
+            /* Weißer Text */
+            padding: 8px;
+            /* Größeres Padding für bessere Klickbarkeit */
+            font-weight: 600;
+            /* Fetter Text */
+            border-top-left-radius: 8px;
+            /* Obere linke Ecke abgerundet */
+            border-top-right-radius: 8px;
+            /* Obere rechte Ecke abgerundet */
+            cursor: grab;
+            /* Ändere den Cursor, um zu zeigen, dass das Fenster gezogen werden kann */
+        }
+
+
+        .window-content {
+            padding: 10px;
+        }
+
+        /* Stil für den Schließen-Button */
+        .window .close-btn {
+            cursor: pointer;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <!-- Placeholder-Icons -->
-        <div class="icon">Icon 1</div>
-        <div class="icon">Icon 2</div>
-        <div class="icon">Icon 3</div>
-        <div class="icon">Icon 4</div>
-        <div class="icon">Icon 5</div>
-        <div class="icon">Icon 6</div>
-        <div class="icon">Icon 7</div>
-        <div class="icon">Icon 8</div>
-        <div class="icon">Icon 9</div>
-        <div class="icon">Icon 10</div>
-        <div class="icon">Icon 11</div>
-        <div class="icon">Icon 12</div>
-        <div class="icon">Icon 13</div>
-        <div class="icon">Icon 14</div>
-        <div class="icon">Icon 15</div>
-        <div class="icon">Icon 16</div>
-        <div class="icon">Icon 17</div>
-        <div class="icon">Icon 18</div>
-        <div class="icon">Icon 19</div>
-        <div class="icon">Icon 20</div>
-        <div class="icon">Icon 21</div>
-        <div class="icon">Icon 22</div>
-        <div class="icon">Icon 23</div>
-        <div class="icon">Icon 24</div>
+        <!-- Placeholder-Icons with Titles -->
+        <div class="icon">
+            <img src="icon1.png" alt="Icon 1"> <!-- Beispielhaftes Bild -->
+            <div class="title">Test1</div>
+        </div>
+        <div class="icon">
+            <img src="icon2.png" alt="Icon 2"> <!-- Beispielhaftes Bild -->
+            <div class="title">AoE2Bulletin</div>
+        </div>
+        <!-- Weitere Icons mit Titeln -->
     </div>
+    <!-- Windows Startmenü -->
+    <div class="taskbar">
+        <img src="windows-logo.png" alt="Windows Logo" class="windows-logo" onclick="toggleStartMenu()">
+        <div class="clock" id="clock"></div>
+    </div>
+
+    <!-- Frei bewegbares Fenster (Disclaimer) -->
+    <div class="window" id="disclaimer-window">
+        <!-- Titelleiste des Fensters -->
+        <div class="window-title" id="window-title" onmousedown="startDragging(event)">
+            <span class="title">Disclaimer</span>
+            <!-- Schließen-Button -->
+            <span class="close-btn" onclick="closeWindow()">X</span>
+        </div>
+        <!-- Inhalt des Fensters -->
+        <div class="content">
+            <p>This page was created using ChatGPT.</p>
+            <p>This page is for testing/learning purposes only.</p>
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            var timeString = hours + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+            document.getElementById('clock').textContent = timeString;
+        }
+        // Aktualisierung der Uhrzeit alle Sekunde
+        setInterval(updateClock, 1000);
+        // Sofortige Anzeige der Uhrzeit beim Laden der Seite
+        updateClock();
+
+        function toggleStartMenu() {
+            var container = document.querySelector('.container');
+            var computedStyle = window.getComputedStyle(container);
+            var displayStyle = computedStyle.getPropertyValue('display');
+
+            if (displayStyle === 'none') {
+                container.style.display = 'grid';
+            } else {
+                container.style.display = 'none';
+            }
+        }
+
+        // Funktion zum Schließen des Fensters
+        function closeWindow() {
+            var windowElement = document.getElementById('disclaimer-window');
+            windowElement.style.display = 'none';
+        }
+
+        // Funktion zum Starten des Ziehvorgangs
+        function startDragging(e) {
+            var windowElement = document.getElementById('disclaimer-window');
+            var offsetX = e.clientX - windowElement.getBoundingClientRect().left;
+            var offsetY = e.clientY - windowElement.getBoundingClientRect().top;
+
+            function moveWindow(e) {
+                windowElement.style.left = e.clientX - offsetX + 'px';
+                windowElement.style.top = e.clientY - offsetY + 'px';
+            }
+
+            function stopDragging() {
+                document.removeEventListener('mousemove', moveWindow);
+                document.removeEventListener('mouseup', stopDragging);
+            }
+
+            document.addEventListener('mousemove', moveWindow);
+            document.addEventListener('mouseup', stopDragging);
+        }
+    </script>
 </body>
+
 </html>
